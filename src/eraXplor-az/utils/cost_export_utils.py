@@ -1,13 +1,21 @@
 import datetime
+from typing import Dict, List, TypedDict, Union
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.costmanagement import CostManagementClient, models
 
+class CostRecord(TypedDict):
+    """Class type annotation tool dettermining the List Schema.
+    Type definition for a single cost record.
+    """
+    TIME_PERIOD: Dict[str, str]
+    COST: str
 
-def monthly_sub_cost_export(
+def cost_export(
     subscription_id: str, 
     start_date: str, 
     end_date: str,
-) -> dict:
+    granularity: str = 'Daily',
+) -> List[CostRecord]:
     
     credential = DefaultAzureCredential()
     cm_client = CostManagementClient(credential)
@@ -15,6 +23,16 @@ def monthly_sub_cost_export(
     start_date = datetime.datetime.strptime(start_date, "%Y,%m,%d")
     end_date = datetime.datetime.strptime(end_date, "%Y,%m,%d")
     scope = f"/subscriptions/{subscription_id}"
+    # scope = f"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"
+    # scope = f"/providers/Microsoft.Management/managementGroups/{managementGroupId}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}"
+    # scope = f"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}"
+    
+    
     
     cm_client_query_results = []
         
@@ -29,7 +47,7 @@ def monthly_sub_cost_export(
                     to=end_date,
                 ),
                 dataset=models.QueryDataset(
-                    granularity='Daily',
+                    granularity=granularity,
                     aggregation={
                         'totalcost': models.QueryAggregation(name='PreTaxCost', function='Sum')
                     }
@@ -54,5 +72,5 @@ def monthly_sub_cost_export(
         print(f"An error occurred: {e}")
         return {"error": str(e)}
 
-cm_client_query_results = monthly_sub_cost_export("sub_id_here", "2025,1,1", "2025,4,30")
+cm_client_query_results = cost_export("856880af-e2ac-41b2-b5fb-e7ebfe4d97bc", "2025,1,1", "2025,4,30", "monthly")
 print(cm_client_query_results)
