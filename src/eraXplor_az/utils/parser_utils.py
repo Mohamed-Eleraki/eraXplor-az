@@ -3,7 +3,7 @@
 import argparse
 from datetime import datetime, timedelta
 
-def get_default_start_date():
+def _get_default_start_date():
     today = datetime.today()
     # Go back approx 3 months (~90 days); not always accurate for month boundaries
     three_months_ago = today - timedelta(days=90)
@@ -21,7 +21,7 @@ def parser():
         type=str,
         required=False,
         help="Start date for cost export in YYYY,MM,DD format.",
-        default=get_default_start_date(),
+        default=_get_default_start_date(),
     )
     arg_parser.add_argument(
         "-e", "--end-date",
