@@ -72,5 +72,5 @@ def cost_export(
         print(f"An error occurred: {e}")
         return {"error": str(e)}
 
-cm_client_query_results = cost_export("856880af-e2ac-41b2-b5fb-e7ebfe4d97bc", "2025,1,1", "2025,4,30", "monthly")
-print(cm_client_query_results)
+# cm_client_query_results = cost_export("856880af-e2ac-41b2-b5fb-e7ebfe4d97bc", "2025,1,1", "2025,4,30", "monthly")
+# print(cm_client_query_results)

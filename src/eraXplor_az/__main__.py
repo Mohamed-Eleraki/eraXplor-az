@@ -1,5 +1,7 @@
 import termcolor
 from utils.banner_utils import banner as generate_banner
+from utils.parser_utils import parser
+from utils.cost_export_utils import cost_export
 
 def main() -> None:
     """Orchestrates & Manage depends of cost export workflow."""
@@ -9,7 +11,21 @@ def main() -> None:
     print(f"\n\n {termcolor.colored(banner_format, color="green")}")
     print(f"{termcolor.colored(copyright_notice, color="green")}", end="\n\n")
     
+    # Fetch Parsed parameters by command line
+    arg_parser = parser().parse_args()
+    start_date_input = arg_parser.start_date
+    end_date_input = arg_parser.end_date
+    subscription_id_input = arg_parser.subscription_id
+    granularity_input = arg_parser.granularity
     
-    
+    # Parsing data to cost export func
+    results = cost_export(
+        subscription_id=subscription_id_input,
+        start_date=start_date_input,
+        end_date=end_date_input,
+        granularity=granularity_input,
+    )
+
+    print(results)
 if __name__ == "__main__":
     main()
