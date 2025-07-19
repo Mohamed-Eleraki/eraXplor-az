@@ -3,7 +3,7 @@ from typing import Dict, List, TypedDict, Union
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.costmanagement import CostManagementClient, models
 
-class CostRecord(TypedDict):
+class _CostRecord(TypedDict):
     """Class type annotation tool dettermining the List Schema.
     Type definition for a single cost record.
     """
@@ -15,7 +15,7 @@ def cost_export(
     start_date: str, 
     end_date: str,
     granularity: str = 'Daily',
-) -> List[CostRecord]:
+) -> List[_CostRecord]:
     
     credential = DefaultAzureCredential()
     cm_client = CostManagementClient(credential)
