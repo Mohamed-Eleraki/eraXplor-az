@@ -43,5 +43,12 @@ def parser():
         default='Monthly',
         help="Granularity of cost data (Daily or Monthly). Default is Monthly.",
     )
+    arg_parser.add_argument(
+        "-o", "--out",
+        type=str,
+        required=False,
+        default="az_cost_report.csv",
+        help="CSV output filename.",
+    )
     
     return arg_parser

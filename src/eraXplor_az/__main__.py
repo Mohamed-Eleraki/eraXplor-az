@@ -1,7 +1,9 @@
+import json
 import termcolor
 from eraXplor_az.utils.banner_utils import banner as generate_banner
 from eraXplor_az.utils.parser_utils import parser
 from eraXplor_az.utils.cost_export_utils import cost_export
+from eraXplor_az.utils.csv_export_utils import csv_export
 
 def main() -> None:
     """Orchestrates & Manage depends of cost export workflow."""
@@ -19,13 +21,16 @@ def main() -> None:
     granularity_input = arg_parser.granularity
     
     # Parsing data to cost export func
-    results = cost_export(
+    cm_client_query_results = cost_export(
         subscription_id=subscription_id_input,
         start_date=start_date_input,
         end_date=end_date_input,
         granularity=granularity_input,
     )
 
-    print(results)
+    print(json.dumps(cm_client_query_results, indent=4, default=str), end="\n\n\n")
+    
+    csv_export(cm_client_query_results)
+    
 if __name__ == "__main__":
     main()
