@@ -116,7 +116,7 @@ python -m eraXplor_az
 
 ```mermaid
 graph LR
-    A[AWS Console] -->|Complex UI| B[Manual Export]
+    A[Azure Console] -->|Complex UI| B[Manual Export]
     B --> C[Spreadsheet Manipulation]
     D[eraXplor] -->|Automated| E[Standardized Reports]
     style D fill:#4CAF50,stroke:#388E3C
