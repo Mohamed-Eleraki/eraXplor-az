@@ -107,25 +107,22 @@ python -m eraXplor_az
 
 ### Argument Reference
 
--h, --help            show this help message and exit
--s START_DATE, --start-date START_DATE
-                      Start date for cost export in YYYY,MM,DD format. (default: 2025,04,21)
--e END_DATE, --end-date END_DATE
-                      End date for cost export in YYYY,MM,DD format. (default: 2025,07,20)
--S SUBSCRIPTION_ID, --subscription-id SUBSCRIPTION_ID
-                      Azure subscription ID for cost export. (default: None)
--g {Daily,Monthly}, --granularity {Daily,Monthly}
-                      Granularity of cost data (Daily or Monthly). Default is Monthly. (default:Monthly)
--o OUT, --out OUT     CSV output filename. (default: az_cost_report.csv)
+- `-h`, `--help`: show this help message and exit
+- `-s`, `--start-date`: _(Optional)_ Start date for cost export in YYYY,MM,DD format. (default: 3 Months ago)
+- `-e`, `--end-date`: _(Optional)_ End date for cost export in YYYY,MM,DD format. (default: Today's date)
+- `-S`,`--subscription-id`: _(Required)_ Azure subscription ID for cost export. (default: None)
+- `-g`, `--granularity`: _(Optional)_ Granularity of cost data (Daily or Monthly). (default:Monthly)
+- `-o`, `--out`: _(Optional)_ CSV output filename. (default: az_cost_report.csv)
 
-<!-- ```mermaid
+```mermaid
 graph LR
     A[Azure Console] ->|Complex UI| B[Manual Export]
     B -> C[Spreadsheet Manipulation]
     D[eraXplor] ->|Automated| E[Standardized Reports]
     style D fill:#4CAF50,stroke:#388E3C
     Replace -> with double --
-``` -->
+```
+
 <br><br>
 <details open>
 <summary><strong>👋Show/Hide Author Details👋</strong></summary>
