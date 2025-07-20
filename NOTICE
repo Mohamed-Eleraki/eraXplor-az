@@ -1,0 +1,12 @@
+eraXplor - Azuew Cost Explorer CLI Tool
+Copyright 2025 Mohamed eraki
+Licensed under the Apache License, Version 2.0
+
+This product includes software developed by Azure Web Services, Inc.
+
+---
+
+Third-Party Components:
+
+1. azure.mgmt.costmanagement – Azure SDK for Python: <https://github.com/Azure/azure-sdk-for-python>
+2. azure.identity - Azure SDK for Python: <https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity>
