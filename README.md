@@ -33,7 +33,15 @@ Quickly find what you're looking for:
 
 ## Why eraXplor?
 
-![https://github.com/Mohamed-Eleraki/eraXplor/blob/master/docs/assets/images/why_eraXplor.jpeg](https://github.com/Mohamed-Eleraki/eraXplor/blob/master/docs/assets/images/why_eraXplor.jpeg)
+```mermaid
+graph LR
+    A[Azure Console] -->|Complex UI| B[Manual Export]
+    B --> C[Spreadsheet Manipulation]
+    D[eraXplor] -->|Automated| E[Standardized Reports]
+    style D fill:#4CAF50,stroke:#388E3C
+```
+
+<!-- ![https://github.com/Mohamed-Eleraki/eraXplor/blob/master/docs/assets/images/why_eraXplor.jpeg](https://github.com/Mohamed-Eleraki/eraXplor/blob/master/docs/assets/images/why_eraXplor.jpeg) -->
 
 # How-To Guides
 
@@ -113,14 +121,6 @@ python -m eraXplor_az
 - `-S`,`--subscription-id`: _(Required)_ Azure subscription ID for cost export. (default: None)
 - `-g`, `--granularity`: _(Optional)_ Granularity of cost data (Daily or Monthly). (default:Monthly)
 - `-o`, `--out`: _(Optional)_ CSV output filename. (default: az_cost_report.csv)
-
-```mermaid
-graph LR
-    A[Azure Console] -->|Complex UI| B[Manual Export]
-    B --> C[Spreadsheet Manipulation]
-    D[eraXplor] -->|Automated| E[Standardized Reports]
-    style D fill:#4CAF50,stroke:#388E3C
-```
 
 <br><br>
 <details open>
